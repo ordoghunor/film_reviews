@@ -1,0 +1,47 @@
+{
+  "name": "lab-ohim2065",
+  "version": "1.0.0",
+  "description": "harmadik hazitol kezdodoen",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "lint": "eslint --fix --ext .js,.jsx .",
+    "devStart": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/ubb-webprog/labs2022/lab-ohim2065.git"
+  },
+  "author": "Hunor Ordog",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/ubb-webprog/labs2022/lab-ohim2065/issues"
+  },
+  "homepage": "https://gitlab.com/ubb-webprog/labs2022/lab-ohim2065#readme",
+  "devDependencies": {
+    "eslint": "^8.13.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "nodemon": "^2.0.16"
+  },
+  "dependencies": {
+    "auto-bind": "^5.0.1",
+    "bad-words": "^3.0.4",
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.7",
+    "express": "^4.17.3",
+    "express-formidable": "^1.2.0",
+    "fs": "^0.0.1-security",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "linq": "^4.0.0",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "path": "^0.12.7",
+    "uuid": "^8.3.2",
+    "uuidv4": "^6.2.13"
+  }
+}

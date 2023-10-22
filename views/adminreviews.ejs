@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <%- include('partials/head.ejs', { title: 'Filmek' }) %>
+  <body>
+    
+    <script src="/deletion.js"></script>
+    <script src="/approve.js"></script>
+
+    <%- include('partials/navbar.ejs') %>
+
+    <h1>Approve/delete reviews</h1>
+
+    <% if (locals.payload && (locals.payload.funk >= 1)) { %>
+
+        <% if (review.length) { %>
+            <% review.forEach((review) => { %>
+
+                <% if (review.elfogadva == 0) { %>
+
+
+                <div id="mes<%=review.id %>" class="afterdel hiddenelement margin">Succesfully deleted.</div>
+                <div id="review<%=review.id %>" class="comment">
+                    <div>FILM: <%= review.cim %></div>
+                    <div>
+                <div >username: <%=review.username %> </div>
+                <span >pontszam: <%=review.pontszam %> / 10 </span>
+                </div>
+                <div>Hozzaszolas: <%=review.velemeny %> </div>
+                
+                <div class="egykispadding">
+                <span class="dotzold"></span>
+                <input type="button" onclick="approveReview(<%=review.id %>)" value="Approve" />
+                </div>
+
+                <div class="egykispadding">
+                <span class="dotpiros"></span>
+                <input type="button" onclick="rejectReview(<%=review.id %>)" value="Reject" />
+                </div>
+
+                <% if (locals.payload.funk >= 2) { %>
+                <div class="egykispadding">
+                <span class="dotpiros"></span>
+                <input type="button" onclick="deleteReview(<%=review.id %>)" value="Delete" />
+                </div>
+                <% } %>
+
+                </div>
+
+                <% } %>
+
+            <% }) %>
+        <% } else { %>
+        <p class="message">Nincsenek review-ok!</p>
+        <% } %>
+
+    <% } else { %>
+
+        <div>You have no permisson to be here.</div>
+        <a href="/">back</a>
+
+    <% } %>
+
+    <footer>© 2022 Ördög Hunor. All Right Reserved</footer>
+
+</body>
+</html>

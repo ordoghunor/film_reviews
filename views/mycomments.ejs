@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <%- include('partials/head.ejs', { title: 'My comments' }) %>
+  <body>
+
+    <script src="/deletion.js"></script>
+    <script src="/mycomments.js"></script>
+
+    <%- include('partials/navbar.ejs') %>
+
+    <h1>My comments:</h1>
+
+    <% if (locals.payload ) { %>
+
+        <% if (comm.length) { %>
+            <% comm.forEach((comm) => { %>
+
+                <div class="hiddenelement margin" id="mes<%= comm.id %>"></div>
+
+                <div class="comment" id="review<%= comm.id %>">
+
+                    <div>Filmnek a cime: <%= comm.cim %></div>
+                    <div>Pontszam adva: <%= comm.pontszam %></div>
+                    <span>Velemeny:</span><div><%= comm.velemeny %></div>
+
+                    <div class="margin">Status: 
+                    <% if (comm.elfogadva == 1) { %>
+                        <span class="zoldes">APPROVED</span>
+                    <% } else if (comm.elfogadva == 0) { %>
+                        <span class="sargas">APPROVAL PENDING</span>
+                    <% } else { %>
+                        <span class="pirossas">REJECTED</span>
+                    <% } %>
+                    </div>
+
+                    <div>
+                    <span>Edit</span>
+                    <label class="switch">
+                        <input type="checkbox" id="editcheckbox<%= comm.id %>" onclick="activateCommentEdit(<%= comm.id %>)">
+                        <span class="slider round"></span>
+                      </label>
+                    </div>
+
+                      <div id="editformx<%= comm.id %>" class="hiddenelement">
+                      <form action="/mycomments/edit/<%= comm.id %>" method="post">
+                      <p>Pontszam: <select name="pontszam">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                      </select></p>
+                      <p>Velemeny: <textarea type="text" name="velemeny" cols="50" rows="6"></textarea></p>
+                      <div class="egykispadding"><span class="dotsarga"></span><input type="submit" value="Update"></div>
+                      </form>
+                      <div class="egykispadding">
+                        <span class="dotpiros"></span>
+                        <input type="button" onclick="deleteReview(<%=comm.id %>)" value="Delete" />
+                        </div>
+                    </div>
+
+                </div>
+
+            <% }) %>
+        <% } else { %>
+        <p class="message">Nincsenek review-ok!</p>
+        <% } %>
+
+    <% } else { %>
+
+        <div>You have no permisson to be here.</div>
+        <a href="/">back</a>
+
+    <% } %>
+
+    <footer>© 2022 Ördög Hunor. All Right Reserved</footer>
+
+</body>
+</html>

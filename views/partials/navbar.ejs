@@ -1,0 +1,47 @@
+<div class="margin">
+<nav class="navMenu">
+  
+      <a href="/" class="side">Home</a>
+  
+  <% if (locals.payload) { %>
+
+    <% if (locals.payload.funk >= '1') { %>
+        <a href="/admin/upload" class="side">Add film</a>
+    
+        <a href="/admin/reviews" class="side">Reviews admin</a>
+
+     <% if (locals.payload.funk >= '2') { %>
+    
+        <a href="/admin/users/rights" class="side">User rights</a>
+
+        <a href="/admin/allcomments" class="side">All remarks</a>
+
+        <a href="/admin/editfilm" class="side">Edit films</a>
+      
+     <% } %>
+
+    <% } %>
+
+    <% if (locals.payload.funk >= '0') { %>
+
+        <a href="/mycomments" class="side">My comments</a>
+
+    <% } %>
+
+  <% } else { %>
+
+      <a href="/register" class="side">Sign up</a>
+
+    <a href="/auth/login" class="side">Sign in</a>
+
+  <% } %>
+  <div class="dot"></div>
+  </nav>
+
+<% if (locals.payload) { %>
+
+<span class="logged"><%= locals.payload.username %></span>
+<a href="/auth/logout" class="logout">Logout</a>
+
+<% } %>
+</div>

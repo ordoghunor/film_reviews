@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <%- include('partials/head.ejs', { title: 'Login Filmek' }) %>
+  <body>
+
+    <%- include('partials/navbar.ejs') %>
+
+    <h1>Log In</h1>
+
+    <div class="hibasjelszo"><%= hibasj %></div>
+
+    <div class="margin">
+    <form action="/auth/login" method="post" class="center">
+        <div class="egykispadding">
+        Login
+        </div>
+
+        <div class="egykispadding">
+         <label for="userx">username</label> 
+        <input type="text" id="user" name="username">
+        </div>
+        
+        <div class="egykispadding">
+          <label for="passx">password</label>
+        <input type="password" id="passwd" name="password">
+        </div>
+
+        <div class="egykispadding"><input type="submit" value="Sign In" class="submit"></div>
+        <a href="/register" class="egykispadding">Register</a>
+    </form>
+    </div>
+
+    <footer>© 2022 Ördög Hunor. All Right Reserved</footer>
+
+  </body>
+</html>

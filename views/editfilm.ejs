@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <%- include('partials/head.ejs', { title: 'Edit film' }) %>
+  <body>
+
+    <script src="/mycomments.js"></script>
+
+    <%- include('partials/navbar.ejs') %>
+
+    <h1>EDITING FILMS:</h1>
+
+    <% if (locals.payload && locals.payload.funk >= 2) { %>
+
+        <% if (film.length) { %>
+            <% film.forEach((film) => { %>
+
+
+                <div class="comment">
+
+                    <div>Filmnek a cime: <%= film.cim %></div>
+                    <div>Megjelenesi ev: <%= film.date %></div>
+                    <div>Leiras: <%= film.leiras %></div>
+                    <div>Zsaner: <%= film.zsaner %></div>
+                
+                    <div>
+                    <span>Edit</span>
+                    <label class="switch">
+                        <input type="checkbox" id="editcheckbox<%= film.id %>" onclick="activateCommentEdit('<%= film.id %>')">
+                        <span class="slider round"></span>
+                      </label>
+                    </div>
+
+                      <div id="editformx<%= film.id %>" class="hiddenelement">
+                      <form action="/admin/editfilm/<%= film.id %>" method="post">
+                        <div class="egykispadding">Cím: <input type="text" name="cim" /></div>
+                        <div class="egykispadding">Megjelnési év: <input type="text" name="datum" size="4"  title="4digits" /></div>
+                        <div class="egykispadding">Leírás: <input type="text" name="description" size="25"  /></div>
+                        <div class="egykispadding">Zsáner: <input type="text" name="genre"  /></div>
+                        <div class="egykispadding">Borítókép: <input type="file" name="boritokep" /></div>
+                      <p><input type="submit" value="Update"></p>
+                      </form>
+                    </div>
+
+                </div>
+
+            <% }) %>
+        <% } else { %>
+        <p class="message">Nincsenek review-ok!</p>
+        <% } %>
+
+    <% } else { %>
+
+        <div>You have no permisson to be here.</div>
+        <a href="/">back</a>
+
+    <% } %>
+
+    <footer>© 2022 Ördög Hunor. All Right Reserved</footer>
+
+</body>
+</html>

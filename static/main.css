@@ -1,0 +1,445 @@
+/* ===================================== */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+* {
+  margin: 1px;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  /* background: #272727; */
+  font-family: "Montserrat", sans-serif;
+}
+
+.navMenu a {
+  align-items: center;
+  justify-content: center;
+  /* color: #f6f4e6; */
+  color: #000000;
+  text-decoration: none;
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  display: inline-block;
+  width: 80px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.navMenu a:hover {
+  color: #fddb3a;
+}
+
+.navMenu .dot {
+  width: 6px;
+  height: 6px;
+  background: #fddb3a;
+  border-radius: 50%;
+  opacity: 0;
+  -webkit-transform: translateX(30px);
+  transform: translateX(30px);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.navMenu a:nth-child(1):hover ~ .dot {
+  -webkit-transform: translateX(30px);
+  transform: translateX(30px);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  opacity: 1;
+}
+
+.navMenu a:nth-child(2):hover ~ .dot {
+  -webkit-transform: translateX(110px);
+  transform: translateX(110px);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  opacity: 1;
+}
+
+.navMenu a:nth-child(3):hover ~ .dot {
+  -webkit-transform: translateX(200px);
+  transform: translateX(200px);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  opacity: 1;
+}
+
+.navMenu a:nth-child(4):hover ~ .dot {
+  -webkit-transform: translateX(285px);
+  transform: translateX(285px);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  opacity: 1;
+}
+
+.navMenu a:nth-child(5):hover ~ .dot {
+  -webkit-transform: translateX(370px);
+  transform: translateX(370px);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  opacity: 1;
+}
+
+.navMenu a:nth-child(6):hover ~ .dot {
+  -webkit-transform: translateX(455px);
+  transform: translateX(455px);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  opacity: 1;
+}
+
+.navMenu a:nth-child(7):hover ~ .dot {
+  -webkit-transform: translateX(540px);
+  transform: translateX(540px);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  opacity: 1;
+}
+
+/* ===================================== */
+
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: rgb(255, 199, 134);
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 10px 22px;
+  text-decoration: none;
+  margin: 2px 1px;
+  cursor: pointer;
+}
+
+/* ================================================== */
+
+body {
+    background-color: rgb(167, 198, 255);
+}
+
+.center {
+    text-align: center;
+}
+
+input:invalid {
+  color: red;
+  /* turn to red as long as pattern do not match */
+}
+input:invalid+b:before {
+  content: 'Invalid Number';/* add text untill patterns matches */
+}
+input:invalid+b+[type="submit"] {
+  display: none; /* hide input submit untill pattern matches */
+}
+
+/* table, th, td {
+  border: 2px solid gray;
+  border-collapse: collapse;
+  padding: 3px;
+  margin: 3px;
+} */
+
+.message {
+  font-style: italic;
+}
+
+/* div.navbar {
+  background-color: rgb(148, 156, 255);
+  color:azure;
+  padding: 4px;
+} */
+
+span.gomb {
+  padding: 3px;
+}
+
+span.gomb:hover {
+  background-color: rgb(255, 199, 134);
+  color:rgb(0, 0, 0);
+}
+
+span.gomb:visited {
+  color:azure;
+}
+
+.reviews {
+  background-color: rgb(148, 156, 255);
+}
+
+.filmcim {
+  padding: 4px;
+  margin: 4px;
+}
+
+.information {
+  background-color: rgb(196, 198, 219);
+  padding: 2px;
+  margin: 2px;
+}
+
+.information:hover {
+  background-color: rgb(255, 199, 134);
+}
+
+.comment {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 4px;
+  margin: 2em;
+}
+
+.hozzaszolo {
+  color:rgb(59, 44, 0);
+  font-size: 115%;
+  padding: 3px;
+  transition: font-size 1s;
+  -webkit-transition: font-size 1s;
+}
+
+.hozzaszolo:hover {
+  font-size: 129%;
+  transition: font-size 1s;
+  -webkit-transition: font-size 1s;
+}
+
+.pontszam {
+  font-size: 175%;
+  margin: 5px;
+}
+
+.visszajelzes {
+  font-style: italic;
+  margin: 2px;
+}
+
+.margin {
+  margin: 1em;
+}
+
+img.fooldal {
+  height: 200px;
+  width: auto;/*maintain aspect ratio*/
+  max-width: 600px;
+}
+
+img.bentfilm {
+  height: 200px;
+  width: auto;/*maintain aspect ratio*/
+  max-width: 900px;
+  transition: height 2s;
+  -webkit-transition: height 2s;
+}
+
+img.bentfilm:hover {
+  height: 450px;
+  width: auto;/*maintain aspect ratio*/
+  max-width: 1200px;
+  transition: height 2s;
+  -webkit-transition: height 2s;
+}
+
+.hiddenelement {
+  display: none;
+}
+
+.afterdel {
+  font-style: italic;
+  font-size: 75%;
+}
+
+h2 {
+  background: rgb(255, 199, 134);
+  border-radius: 6px 6px 6px 6px;
+  box-shadow: 0 0 0 1px #5F5A4B, 1px 1px 6px 1px rgba(10, 10, 0, 0.5);
+  color: #FFFFFF;
+  font-family: "Microsoft YaHei", "Tahoma", "boldface", Arial;
+  font-size: 15px;
+  font-weight: bold;
+  height: 24px;
+  line-height: 23px;
+  margin: 12px 0;
+  padding: 5px 0 5px 10px;
+  text-shadow: 2px 2px 3px #222222;
+}
+
+.inlinec {
+  display: inline;
+}
+
+h1 {
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 3em;
+  letter-spacing: -2px;
+  border-bottom: 2px solid black;
+  text-transform: uppercase;
+ }
+
+ div.egyfilm {
+   margin: 3em;
+   padding: 5px;
+ }
+
+ .egykispadding {
+   padding: 7px;
+ }
+
+ .hibasjelszo {
+   padding: 7px;
+   margin: 1em;
+   color: red;
+ }
+ 
+div.abslogin {
+  position: absolute;
+  top: 16%; 
+  right: 40%;
+}
+
+ .logged {
+  position: absolute;
+  top: 6%; 
+  right: 12%;
+  transform: translate(50%,-50%);
+  text-transform: uppercase;
+  font-family: verdana;
+  font-size: 2em;
+  font-weight: 700;
+  color: #f5f5f5;
+  text-shadow: 1px 1px 1px #919191,
+      1px 2px 1px #919191,
+      1px 3px 1px #919191,
+      1px 4px 1px #919191,
+      1px 5px 1px #919191,
+      1px 6px 1px #919191,
+      1px 7px 1px #919191,
+      1px 8px 1px #919191,
+      1px 9px 1px #919191,
+      1px 10px 1px #919191,
+  1px 18px 6px rgba(16,16,16,0.4),
+  1px 22px 10px rgba(16,16,16,0.2),
+  1px 25px 35px rgba(16,16,16,0.2),
+  1px 30px 60px rgba(16,16,16,0.4);
+}
+
+.logout {
+  position: absolute;
+  top: 13%; 
+  right: 12%;
+  transform: translate(50%,-50%);
+  text-transform: uppercase;
+  font-family: verdana;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.dotx {
+  height: 10px;
+  width: 20px;
+  background-color: rgb(255, 162, 41);
+  border-radius: 45%;
+  display: inline-block;
+}
+
+.dotzold {
+  height: 12px;
+  width: 12px;
+  background-color: rgb(34, 212, 28);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dotsarga {
+  height: 12px;
+  width: 12px;
+  background-color: rgb(212, 194, 28);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dotpiros {
+  height: 12px;
+  width: 12px;
+  background-color: rgb(212, 28, 28);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.sargas {
+  color: #aec00f;
+}
+
+.zoldes {
+  color: #18d311;
+}
+
+.pirossas {
+  color: #e01414;
+}
+
+.narancs {
+  background-color: rgb(255, 199, 134);
+}
+
+/* =================switch========================= */
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 25.5px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 19.5px;
+  width: 19.5px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: rgb(255, 162, 41);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px rgb(255, 162, 41);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(19.5px);
+  -ms-transform: translateX(19.5px);
+  transform: translateX(19.5px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 25.5px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

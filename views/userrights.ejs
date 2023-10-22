@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <%- include('partials/head.ejs', { title: 'Filmek' }) %>
+  <body>
+    
+    <script src="/promotions.js"></script>
+
+    <%- include('partials/navbar.ejs') %>
+
+    <h1>User rights</h1>
+
+    <% if (locals.payload && (locals.payload.funk >= 2)) { %>
+
+        <div class="margin">
+        <form action="/admin/users/rights/search" method="post" enctype="multipart/form-data" class="center">
+            <p>username: <input type="text" name="susername" /></p>
+            <p>funk: <select name="sfunk">
+                <option value="0">Normal users</option>
+                <option value="1">Moderators</option>
+            </select></p>
+            
+            <div class="egykispadding">
+            <p><input type="submit" value="Search!"></p>
+            </div>
+          </form>
+        </div>
+
+        <% if (user.length) { %>
+            <% user.forEach((user) => { %>
+
+                <% if (user.username != 'admin') { %>
+
+                
+                <div id="review<%=user.username %>" class="comment">
+                    <div id="mes<%=user.username %>" class="afterdel hiddenelement margin">Succesfully deleted.</div>
+
+                    <div>username: <%= user.username %></div>
+                    <div id="changefunk<%=user.username %>">funk: <%= user.funk %></div>
+
+                <% if (user.funk == 0) { %>
+                    <span id="promoteclick<%=user.username %>">
+                    <input type="button" onclick="promoteUser('<%=user.username %>')" value="Promote to moderator" />
+                    </span>
+                <% } else { %>
+                    <span id="promoteclick<%=user.username %>" class="hiddenelement">
+                    <input type="button" onclick="promoteUser('<%=user.username %>')" value="Promote to moderator" />
+                    </span>
+                <% } %>
+
+                <% if (user.funk == 1) { %>
+                    <span id="demoteclick<%=user.username %>">
+                    <input type="button" onclick="demoteUser('<%=user.username %>')" value="Demote to normal user" />
+                    </span>
+                <% } else { %>
+                    <span id="demoteclick<%=user.username %>" class="hiddenelement">
+                    <input type="button" onclick="demoteUser('<%=user.username %>')" value="Demote to normal user" />
+                    </span>
+                <% } %>
+
+                <% if (user.funk == 1) { %>
+                    <span id="dot<%=user.username %>" class="dotx"></span>
+                <% } else { %>
+                    <span id="dot<%=user.username %>" class="hiddenelement"><span class="dotx"></span></span>
+                <% } %>
+
+                </div>
+
+                <% } %>
+
+            <% }) %>
+        <% } else { %>
+        <p class="message">Nincsenek review-ok!</p>
+        <% } %>
+
+    <% } else { %>
+
+        <div>You have no permisson to be here.</div>
+        <a href="/">back</a>
+
+    <% } %>
+
+    <div class="margin comment"><span id="dot<%=user.username %>" class="dotx"></span>  -  Moderator</div>
+
+    <footer>© 2022 Ördög Hunor. All Right Reserved</footer>
+
+</body>
+</html>

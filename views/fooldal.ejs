@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <%- include('partials/head.ejs', { title: 'Filmek' }) %>
+  <body>
+    <%- include('partials/navbar.ejs') %>
+
+    <script src="/genre.js"></script>
+
+    <form action="/films/get_data" method="post" enctype="multipart/form-data" class="center">
+      <p>Cimre: <input type="text" name="rcim" /></p>
+      <p>Zsánerre: <input type="text" name="rgenre" /></p>
+      <p>Minimum evszam: <input type="text" name="minevszam" size="4" pattern="^[0-9]{4}$" /></p>
+      <p>Maximum evszam: <input type="text" name="maxevszam" size="4" pattern="^[0-9]{4}$" /></p>
+      <div class="egykispadding">
+      <p><input type="submit" value="Search!"></p>
+      </div>
+    </form>
+
+    
+    <% if (film.length) { %>
+      <% i = 0 %>
+       
+        <% film.forEach((film) => { %>
+
+          <div class="egyfilm">
+          <h1 class="center"><%=film.cim %></h1>
+          <div class="center"><%=film.date %></div>
+          
+          <div class="center">
+          <div id="leiras<%= film.id %>"></div>
+          <div id="genre<%= film.id %>"></div>
+          <div class="egykispadding">
+          <input type="button" onclick="getmoreinfo('<%= film.id %>')" value="more info"/>
+          </div>  
+          </div>
+
+          <div class="center"><a href="/films/reviews/<%= film.id %>"><img class="center fooldal" src="data:image/jpeg;base64, <%= jpgBinary[i] %>" alt="<%= film.boritokep %>"></a></div>
+          <div class="center"><a href="/films/reviews/<%= film.id %>">Read more about <i><%=film.cim %></i></a></div>
+          </div>
+          <% i = i + 1 %>
+          
+        <% }) %>
+    <% } else { %>
+      <p class="message">No film to show</p>
+    <% } %>
+
+    <footer>© 2022 Ördög Hunor. All Right Reserved</footer>
+
+  </body>
+</html>

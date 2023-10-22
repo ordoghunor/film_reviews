@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="hu">
+    <%- include('partials/head.ejs', { title: 'Filmek' }) %>
+<body>
+    <%- include('partials/navbar.ejs') %>
+
+    <% if (locals.payload) { %>
+    <% if (locals.payload.funk >= 1) { %>
+
+        <h1>Film feltoltes (admin)</h1>
+
+    <form action="/films/upload_file" method="post" enctype="multipart/form-data">
+    <div class="egykispadding">Cím: <input type="text" name="cim" pattern="^.{1,}$" required /></div>
+    <div class="egykispadding">Megjelnési év: <input type="text" name="datum" size="4" pattern="^[0-9]{4}$" title="4digits" required /></div>
+    <div class="egykispadding">Leírás: <input type="text" name="description" size="25" pattern="^.{4,}$" required /></div>
+    <div class="egykispadding">Zsáner: <input type="text" name="genre" pattern="^.{1,}$" required /></div>
+    <div class="egykispadding">Borítókép: <input type="file" name="boritokep" required /></div>
+    <div class="egykispadding"><input type="submit" value="Feltolt film!"></div>
+
+    </form>
+    
+    <% } else { %>
+
+        <div> U are not an admin user.</div>
+
+    <% } %>
+    <% } else { %>
+
+        <div>You have no permisson to be here.</div>
+        <a href="/">back</a>
+
+    <% } %>
+
+    <footer>Copyright 2022</footer>
+
+</body>
+</html>

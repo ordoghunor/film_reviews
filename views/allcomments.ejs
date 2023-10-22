@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <%- include('partials/head.ejs', { title: 'Filmek' }) %>
+  <body>
+
+    <%- include('partials/navbar.ejs') %>
+
+    <script src="/deletion.js"></script>
+
+    <h1>All comments:</h1>
+
+    <% if ( locals.payload && locals.payload.funk >= 2 ) { %>
+
+        <div class="margin">
+            <form action="/admin/allcomments/search" method="post" enctype="multipart/form-data" class="center">
+                <p>username: <input type="text" name="susername" /></p>
+                <p>funk: <select name="sfunk">
+                    <option value=""> - any - </option>
+                    <option value="0">Normal users</option>
+                    <option value="1">Moderators</option>
+                </select></p>
+                <p>Film: <select name="filmx">
+                    <option value=""> - any - </option>
+                    <% if (film.length) { %>
+                        <% film.forEach((film) => { %>
+                        <option value="<%= film.id %>"><%= film.cim %></option>
+                        <% }) %>
+                    <% }%>
+                
+                </select></p>
+                <p>Min pontszam: <select name="minpontszam">
+                    <option value=""> - any - </option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select></p>
+                <p>Max pontszam: <select name="maxpontszam">
+                    <option value=""> - any - </option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select></p>
+                
+                <div class="egykispadding">
+                <p><input type="submit" value="Search!"></p>
+                </div>
+              </form>
+            </div>
+
+        <% if (comm.length) { %>
+            <% comm.forEach((comm) => { %>
+
+                <div class="hiddenelement margin" id="mes<%= comm.id %>"></div>
+
+                <div class="comment" id="review<%= comm.id %>">
+
+                    <div>username: <%= comm.username %></div>
+                    <div>Filmnek a cime: <%= comm.cim %></div>
+                    <div>Pontszam adva: <%= comm.pontszam %></div>
+                    <span>Velemeny:</span><div><%= comm.velemeny %></div>
+
+                    <div class="margin">Status: 
+                    <% if (comm.elfogadva == 1) { %>
+                        <span class="zoldes">APPROVED</span>
+                    <% } else if (comm.elfogadva == 0) { %>
+                        <span class="sargas">APPROVAL PENDING</span>
+                    <% } else { %>
+                        <span class="pirossas">REJECTED</span>
+                    <% } %>
+                    </div>
+
+                    <div class="egykispadding">
+                        <span class="dotpiros"></span>
+                        <input type="button" onclick="deleteReview(<%=comm.id %>)" value="Delete" />
+                        </div>
+
+                </div>
+
+            <% }) %>
+        <% } else { %>
+        <p class="message">Nincsenek review-ok!</p>
+        <% } %>
+
+    <% } else { %>
+
+        <div>You have no permisson to be here.</div>
+        <a href="/">back</a>
+
+    <% } %>
+
+    <footer>© 2022 Ördög Hunor. All Right Reserved</footer>
+
+</body>
+</html>

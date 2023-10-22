@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="hu">
+    <%- include('partials/head.ejs', { title: 'Register Filmek' }) %>
+<body>
+
+    <%- include('partials/navbar.ejs') %>
+
+    <h1>Register!</h1>
+
+    <div class="margin">
+    <form action="/register/go" method="post" enctype="multipart/form-data" class="center">
+    
+        <div class="egykispadding">
+            Register
+            </div>
+
+        <div class="egykispadding">Username: <input type="text" name="username" pattern="^.{4,}$" required /></div>
+        <div class="egykispadding">Password: <input type="password" name="password" pattern="^.{6,}$" required /></div>
+        <div class="egykispadding">re-Password: <input type="password" name="passwordx" pattern="^.{6,}$" required /></div>
+
+    <div class="egykispadding"><input type="submit" value="Create account!"></div>
+
+    <a href="/auth/login" class="egykispadding">Log in</a>
+
+    <div class="hibasjelszo"><%= hibasj %></div>
+
+
+    </form>
+    </div>
+
+    <footer>© 2022 Ördög Hunor. All Right Reserved</footer>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <%- include('partials/head.ejs', { title: 'Filmek' }) %>
+  <body>
+    <script src="/deletion.js"></script>
+    <%- include('partials/navbar.ejs') %>
+
+    <div class="keret">
+    <% if (film.length) { %>
+          <% film.forEach((film) => { %>
+            
+            <h1 class="filmcim"><%=film.cim %></h1>  
+            
+            <div class="information">Rating: <span name="filmrating"><%= rating %>/10  ( from <%= n %> review ) </span></div>
+            <div class="information">Film id: <span name="ufilmid"><%=film.id %></span></div>
+            <div class="information">Megjelenesi ev: <%=film.date %></div>
+            <div class="information">Leiras: <%=film.leiras %></div>
+            <div class="information">Zsaner: <%=film.zsaner %></div> 
+            <span class="margin egykispadding">
+              <img class="bentfilm" src="data:image/jpeg;base64, <%= jpgBinary[0] %>" alt="<%= film.boritokep %>">
+            </span>
+
+          <% }) %>
+      <% } else { %>
+        <p class="message">Hibas id!</p>
+      <% } %>
+
+      <div class="margin">Review section:</div>
+
+        <% if (review.length) { %>
+          <% review.forEach((review) => { %>
+
+            <% if (review.elfogadva == 1)  { %>
+
+              <div id="mes<%=review.id %>" class="afterdel hiddenelement">Succesfully deleted.</div>
+              <div id="review<%=review.id %>" class="comment">
+                <div>
+              <span class="hozzaszolo"> <%=review.username %>: </span>
+              <span class="pontszam "> <%=review.pontszam %> / 10 </span>
+                </div>
+              <div class="visszajelzes hozzaszolo"> <%=review.velemeny %> </div>
+              <% if (locals.payload) { %>
+                <% if (locals.payload.username == review.username || locals.payload.funk >= 2) { %>
+                <input type="button" onclick="deleteReview(<%=review.id %>)" value="Delete" />
+                <% } %>
+              <% } %>
+              </div>
+
+            <% } %>
+
+            <% }) %>
+      <% } else { %>
+        <p class="message">Nincsenek review-ok!</p>
+      <% } %>
+
+    <% if (locals.payload) { %>
+      <div class="review margin egykispadding">
+        <% if (film.length) { %>
+          <% film.forEach((film) => { %>
+        <form action="/user_review/submit/<%=film.id %>" method="post">
+          <% }) %>
+        <% } else { %>
+          <p class="message">Hibas id!</p>
+        <% } %>
+        
+        <p>Pontszam: <select name="pontszam">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select></p>
+        <p>Velemeny: <textarea type="text" name="velemeny" cols="50" rows="6"></textarea></p>
+        <div name="valaszx" class="margin"><%= elozoeredmeny %></div>
+        <p><input type="submit" value="Add review!"></p>
+        </form>
+        </div>
+
+      </div>
+    <% } else { %>
+
+      <div class="margin">
+      <div>You need to be logged in to write a review!</div>
+      <span>Sign in <a href="/auth/login">here.</a>Or register <a href="/register">here</a></span>
+      </div>
+
+    <% } %>
+
+    <footer>© 2022 Ördög Hunor. All Right Reserved</footer>
+
+</body>
+</html>
