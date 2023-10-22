@@ -1,1 +1,1 @@
-A website where people can write reviews about films written in Node.js with express.
+MovieRate is a user-friendly web application built with Node.js and Express that enables movie enthusiasts to rate, review, and discover films. Users can create accounts, search for movies, rate them, write reviews.
